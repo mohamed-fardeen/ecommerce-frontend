@@ -1,0 +1,14 @@
+services:
+  # Frontend Service
+  - type: web
+    name: ecommerce-frontend-a2kn
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://ecommerce-backend-dtra.onrender.com
+    routes:
+      - type: rewrite
+        source: /(.*)/*
+        destination: /index.html

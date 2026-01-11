@@ -165,9 +165,23 @@ export default function LocationMap({ onLocationConfirm, initialPosition }) {
 
   const handleConfirm = () => {
     console.log('✅ Confirm Location button clicked');
-    const defaultLocation = initialPosition || { lat: 28.6139, lng: 77.2090 };
-    console.log('Using default location:', defaultLocation);
-    onLocationConfirm(defaultLocation);
+    
+    // Get current marker position instead of default
+    let currentLocation;
+    if (markerRef.current && mapInstanceRef.current) {
+      const markerPosition = markerRef.current.getLatLng();
+      currentLocation = {
+        lat: markerPosition.lat,
+        lng: markerPosition.lng
+      };
+      console.log('Using current marker position:', currentLocation);
+    } else {
+      // Fallback to initial position or default Delhi coordinates
+      currentLocation = initialPosition || { lat: 28.6139, lng: 77.2090 };
+      console.log('Using fallback location:', currentLocation);
+    }
+    
+    onLocationConfirm(currentLocation);
   };
 
   return (
