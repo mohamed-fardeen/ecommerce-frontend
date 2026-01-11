@@ -38,7 +38,7 @@ function AuthenticateProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ logOut, isAuthenticated, setIsAuthenticated, userInfo, loading }}
+      value={{ logOut, isAuthenticated, setIsAuthenticated, userInfo, loading, setUserInfo }}
     >
       {children}
     </AuthContext.Provider>
