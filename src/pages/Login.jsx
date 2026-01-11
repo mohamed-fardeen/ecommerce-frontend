@@ -35,13 +35,15 @@ function Login() {
               console.log('✅ User data keys:', Object.keys(res.data.user || {}));
               setUserInfo(res.data.user);
               setIsAuthenticated(true);
+              
+              // Force navigation immediately
+              setTimeout(() => {
+                console.log('🚀 Navigating to home...');
+                navigate("/", { replace: true });
+              }, 100);
             } else {
               console.log('❌ No user data in response:', res.data);
             }
-            setTimeout(() => {
-              console.log('🚀 Navigating to home...');
-              navigate("/", { replace: true });
-            }, 500);
           }
         })
         .catch((err) => {
