@@ -27,6 +27,11 @@ function Login() {
         .then((res) => {
           if (res.status === 200) {
             toast.success("Login successfull!", { duration: 4000 });
+            // Set user info from response
+            if (res.data?.user) {
+              setUserInfo(res.data.user);
+              setIsAuthenticated(true);
+            }
             setTimeout(() => {
               navigate("/", { replace: true });
             }, 500);
