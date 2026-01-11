@@ -36,8 +36,10 @@ function AuthenticateProvider({ children }) {
         const { status, userInfo } = data;
         setUserInfo(userInfo);
         return status ? setIsAuthenticated(true) : logOut();
+      }).catch(() => {
+        logOut();
       });
-  }, [isAuthenticated]);
+  }, []);
 
   return (
     <AuthContext.Provider
