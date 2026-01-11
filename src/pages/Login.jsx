@@ -25,14 +25,19 @@ function Login() {
           withCredentials: true,
         })
         .then((res) => {
+          console.log('🔍 Login Response:', res);
           if (res.status === 200) {
             toast.success("Login successfull!", { duration: 4000 });
             // Set user info from response
             if (res.data?.user) {
+              console.log('✅ Setting user info:', res.data.user);
               setUserInfo(res.data.user);
               setIsAuthenticated(true);
+            } else {
+              console.log('❌ No user data in response:', res.data);
             }
             setTimeout(() => {
+              console.log('🚀 Navigating to home...');
               navigate("/", { replace: true });
             }, 500);
           }
