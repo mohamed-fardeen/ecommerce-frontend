@@ -31,6 +31,8 @@ function Login() {
             // Set user info from response
             if (res.data?.user) {
               console.log('✅ Setting user info:', res.data.user);
+              console.log('✅ User data type:', typeof res.data.user);
+              console.log('✅ User data keys:', Object.keys(res.data.user || {}));
               setUserInfo(res.data.user);
               setIsAuthenticated(true);
             } else {
