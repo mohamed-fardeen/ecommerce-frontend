@@ -32,7 +32,7 @@ function AuthenticateProvider({ children }) {
   };
 
   useEffect(() => {
-      api.get("/", { withCredentials: true }).then(({ data }) => {
+      api.get("/").then(({ data }) => {
         const { status, userInfo } = data;
         setUserInfo(userInfo);
         return status ? setIsAuthenticated(true) : logOut();
