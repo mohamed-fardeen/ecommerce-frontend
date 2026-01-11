@@ -47,11 +47,14 @@ function Login() {
           }
         })
         .catch((err) => {
-          if (err.response.status === 404 || err.response.status === 401) {
-            toast.error(err.response.data, { duration: 4000 });
+          console.log('❌ Login Error:', err);
+          console.log('❌ Error response:', err.response);
+          
+          if (err.response?.status === 404 || err.response?.status === 401) {
+            toast.error(err.response?.data || "Authentication failed", { duration: 4000 });
           } else {
-            toast.error("Somthing went wrong", { duration: 4000 });
-            console.log(err.response.data);
+            toast.error("Something went wrong", { duration: 4000 });
+            console.log('❌ Full error:', err.response?.data || err.message);
           }
         });
     },
