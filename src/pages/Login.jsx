@@ -8,7 +8,7 @@ import { useAuth } from "../contexts/AuthenticateProvider";
 
 function Login() {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated, setUserInfo } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "",
