@@ -27,7 +27,6 @@ function Login() {
         .then((res) => {
           if (res.status === 200) {
             toast.success("Login successfull!", { duration: 4000 });
-            setIsAuthenticated(true);
             setTimeout(() => {
               navigate("/", { replace: true });
             }, 500);
